@@ -20,7 +20,10 @@ def get_page(page_path: str) -> Optional[str]:
     full_url = BASE_URL + page_path
     try:
         response = requests.get(full_url, timeout=5)
-        return response.status_code
+        return response.text
     except requests.exceptions.ConnectionError as error:
         logger.error(error)
         exit(1)
+
+
+print(get_page(''))
